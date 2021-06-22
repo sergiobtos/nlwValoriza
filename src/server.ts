@@ -1,17 +1,13 @@
 import express from "express";
+import "reflect-metadata";
+import "./database";
 
+import { router} from "./routes";
 
 const app = express();
 
-app.get("/test", (req, res) => {
-    //req => tudo que está entrando
-    //res => tudo que esta saindo
-    return res.send("ola nlw")
-});
-
-app.post("/test-post", (req, res) => {
-    return res.send("ola NLW metodo Post" )
-})
+app.use(express.json());
+app.use(router);
 
 // http://localhost:3000
 app.listen(3000, () => console.log("Server is running ok!"))
